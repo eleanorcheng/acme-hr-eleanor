@@ -20,4 +20,20 @@ public class WorkingDaysTests
     [Fact]
     public void Friday_to_Monday_counts_two_working_days() =>
         Assert.Equal(2, WorkingDays.Count(new DateOnly(2026, 11, 20), new DateOnly(2026, 11, 23)));
+
+    [Fact]
+    public void Saturday_counts_zero() =>
+        Assert.Equal(0, WorkingDays.Count(new DateOnly(2026, 11, 14), new DateOnly(2026, 11, 14)));
+
+    [Fact]
+    public void Sunday_counts_zero() =>
+        Assert.Equal(0, WorkingDays.Count(new DateOnly(2026, 11, 15), new DateOnly(2026, 11, 15)));
+
+    [Fact]
+    public void Saturday_to_Sunday_counts_zero() =>
+        Assert.Equal(0, WorkingDays.Count(new DateOnly(2026, 11, 14), new DateOnly(2026, 11, 15)));
+
+    [Fact]
+    public void Monday_to_next_Monday_counts_six_working_days() =>
+        Assert.Equal(6, WorkingDays.Count(new DateOnly(2026, 11, 16), new DateOnly(2026, 11, 23)));
 }
